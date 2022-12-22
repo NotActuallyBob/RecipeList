@@ -50,17 +50,4 @@ namespace RecipeList {
             modifyWindow.Show();
         }
     }
-    public class Recipe {
-        public Recipe(string title, float cost) {
-            Title = title;
-            Cost = cost;
-            ingrediants = new List<Ingrediant>();
-        }
-        public string Title { get; set; }
-        public float Cost { get; set; }
-        public List<Ingrediant> ingrediants;
-    }
-    public class Ingrediant {
-
-    }
 }
