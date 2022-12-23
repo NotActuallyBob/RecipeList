@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace RecipeList {
     public class Ingrediant {
         public string Name { get; set; }
-        public int Cost { get; set; }
-        public Ingrediant(string name, int cost) {
-            Name = name;
-            Cost = cost;
+        public int Key { get; set; }
+        public float Cost { get; set; }
+        public Ingrediant(int key, string name, float cost) {
+            this.Key = key;
+            this.Name = name;
+            this.Cost = cost;
         }
+
     }
 }

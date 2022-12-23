@@ -10,21 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RecipeList {
     /// <summary>
-    /// Interaction logic for ModifyWindow.xaml
+    /// Interaction logic for PageRecipes.xaml
     /// </summary>
-    public partial class ModifyWindow : Window {
-        private Recipe RecipeToModify;
-        public ModifyWindow() {
+    public partial class PageRecipes : Page {
+        public PageRecipes() {
             InitializeComponent();
         }
-
-        public void LoadRecipe(Recipe r) {
-            RecipeToModify = r;
-            NameTextBox.Text = RecipeToModify.Title;
+        private void Button_CreateRecipe(object sender, RoutedEventArgs e) {
+            RecipeManager.AddRecipe(TitleTextBox.Text);
+            TitleTextBox.Text = "Title";
         }
     }
 }

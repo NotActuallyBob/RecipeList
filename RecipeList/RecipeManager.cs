@@ -24,5 +24,9 @@ namespace RecipeList {
             recipeDictionary.Remove(title);
             return true;
         }
+
+        public static List<Recipe> GetAll() {
+            return recipeDictionary.Values.ToList();
+        }
     }
 }

@@ -7,24 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="TitleTextBox" HorizontalAlignment="Left" Margin="199,120,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CostTextBox" HorizontalAlignment="Left" Margin="324,120,0,0" TextWrapping="Wrap" Text="Cost" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Create New" HorizontalAlignment="Left" Margin="480,120,0,0" VerticalAlignment="Top" Click="Button_CreateRecipe"/>
-        <ListBox Name="RecipeList" HorizontalContentAlignment="Stretch" Margin="0,194,0,0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="0,2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="100" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Title}" />
-                        <TextBlock Grid.Column="1" Text="{Binding Cost}"/>
-                        <Button Grid.Column="2" Tag="{Binding Title}" Content="Modify" Click="Button_ModifyRecipe"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top">
+            <Button Content="Recipes" HorizontalAlignment="Left" Click="Button_GoToRecipes" Height="35" Width="100" Margin="10, 0, 0, 0"/>
+            <Button Content="Ingrediants" HorizontalAlignment="Left" Click="Button_GoToIngrediants" Height="35" Width="100" Margin="10, 0, 0, 0"/>
+            <Button Content="Save" HorizontalAlignment="Left" Click="Button_Save" Height="35" Width="100" Margin="10, 0, 0, 0"/>
+        </StackPanel>
+        <Frame x:Name="Main" Margin="0, 35, 0, 0"></Frame>
     </Grid>
 </Window>
