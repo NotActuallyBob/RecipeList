@@ -6,27 +6,28 @@ using System.Threading.Tasks;
 
 namespace RecipeList {
     public static class RecipeManager {
-        private static Dictionary<string, Recipe> recipeDictionary = new Dictionary<string, Recipe>();
+        public static Dictionary<int, Recipe> recipeDictionary = new Dictionary<int, Recipe>();
 
         public static bool AddRecipe(string title) {
-            if (recipeDictionary.ContainsKey(title)) {
-                return false;
-            }
-            Recipe newRecipe = new Recipe(title);
-            recipeDictionary.Add(title, newRecipe);
+            int key = recipeDictionary.Count();
+            Recipe newRecipe = new Recipe(key, title);
+            recipeDictionary.Add(key, newRecipe);
             return true;
         }
 
-        public static bool RemoveRecipe(string title) {
-            if (!recipeDictionary.ContainsKey(title)) {
-                return false;
-            }
-            recipeDictionary.Remove(title);
+        public static bool RemoveRecipe(int key) {
+            recipeDictionary.Remove(key);
             return true;
         }
 
         public static List<Recipe> GetAll() {
             return recipeDictionary.Values.ToList();
+        }
+        public static List<Tuple<Ingrediant, int>> GetIngrediants(int key) {
+            return recipeDictionary[key].Ingrediants;
+        }
+        public static string GetRecipeName(int key) {
+            return recipeDictionary[key].Name;
         }
     }
 }

@@ -30,9 +30,10 @@ namespace RecipeList {
 
 
         private void Button_GoToRecipes(object sender, RoutedEventArgs e) {
-
+            Main.Content = new PageRecipes();
         }
         private void Button_GoToIngrediants(object sender, RoutedEventArgs e) {
+            Main.Content = new PageIngrediants();
         }
         private void Button_Save(object sender, RoutedEventArgs e) {
             IngrediantManager.Save();

@@ -24,6 +24,11 @@ namespace RecipeList {
             List<Ingrediant> list = ingrediantDictionary.Values.ToList();
             return list;
         }
+
+        public static Ingrediant Get(int key) {
+            return ingrediantDictionary[key];
+        }
+
         public static void Save() {
             string[] lines = new string[ingrediantDictionary.Count()];
             foreach (int key in ingrediantDictionary.Keys) {

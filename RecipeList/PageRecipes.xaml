@@ -20,9 +20,9 @@
                             <ColumnDefinition Width="100" />
                             <ColumnDefinition Width="100" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Title}" />
+                        <TextBlock Grid.Column="0" Text="{Binding Name}" />
                         <TextBlock Grid.Column="1" Text="{Binding Cost}"/>
-                        <Button Grid.Column="2" Tag="{Binding Title}" Content="Modify"/>
+                        <Button Grid.Column="2" Tag="{Binding Name}" Content="Modify"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

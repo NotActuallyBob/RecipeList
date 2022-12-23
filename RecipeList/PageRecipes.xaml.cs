@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,12 @@ namespace RecipeList {
     public partial class PageRecipes : Page {
         public PageRecipes() {
             InitializeComponent();
+            RecipeList.ItemsSource = RecipeManager.recipeDictionary.Values;
         }
         private void Button_CreateRecipe(object sender, RoutedEventArgs e) {
             RecipeManager.AddRecipe(TitleTextBox.Text);
             TitleTextBox.Text = "Title";
+            RecipeList.Items.Refresh();
         }
     }
 }
