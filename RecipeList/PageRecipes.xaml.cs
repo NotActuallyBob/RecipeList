@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RecipeListLibrary;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RecipeList {
     /// <summary>
@@ -27,6 +16,19 @@ namespace RecipeList {
             RecipeManager.AddRecipe(TitleTextBox.Text);
             TitleTextBox.Text = "Title";
             RecipeList.Items.Refresh();
+        }
+
+        private void Button_ModifyRecipe(object sender, RoutedEventArgs e) {
+            Button senderButton = (Button)sender;
+            string? recipeKeyString = senderButton.Tag.ToString();
+            int recipeKeyInt = -1;
+            try {
+                recipeKeyInt = int.Parse(recipeKeyString);
+            } catch {
+            }
+            Recipe recipeToModify = RecipeManager.recipeDictionary[recipeKeyInt];
+            ModifyRecipeWindow modifyRecipeWindow = new ModifyRecipeWindow(recipeToModify);
+            modifyRecipeWindow.Show();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeList {
+namespace RecipeListLibrary {
     public static class IngrediantManager {
         static string saveFilePath = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ProjectSaves", "RecipeList", "ingrediants");
         public static Dictionary<int, Ingrediant> ingrediantDictionary = new Dictionary<int,Ingrediant>();
@@ -21,13 +21,9 @@ namespace RecipeList {
         }
 
         public static List<Ingrediant> GetAll() {
-            List<Ingrediant> list = ingrediantDictionary.Values.ToList();
-            return list;
+            return ingrediantDictionary.Values.ToList();
         }
 
-        public static Ingrediant Get(int key) {
-            return ingrediantDictionary[key];
-        }
 
         public static void Save() {
             string[] lines = new string[ingrediantDictionary.Count()];
@@ -51,6 +47,27 @@ namespace RecipeList {
                 float cost = float.Parse(parameters[2]);
                 ingrediantDictionary.Add(key, new Ingrediant(key, name, cost));
             }
+        }
+
+        /// <summary>
+        /// Get all Ingrediants used in the recipe with the recipeKey
+        /// </summary>
+        /// <param name="recipeKey">Dictionary key for the recipe</param>
+        /// <returns>List of Ingrediants</returns>
+        public static List<Ingrediant> GetIngrediantsUsed(int recipeKey) {
+            List<Ingrediant> list = RecipeManager.recipeDictionary[recipeKey].Ingrediants;
+            return list;
+        }
+
+        /// <summary>
+        /// Get all Ingrediants that are used in the recipe with the recipeKey
+        /// </summary>
+        /// <param name="recipeKey">Dictionary key for the recipe</param>
+        /// <returns>List of Ingrediants</returns>
+        public static List<Ingrediant> GetIngrediantsNotUsed(int recipeKey) {
+            Recipe recipeToCheck = RecipeManager.recipeDictionary[recipeKey];
+            List<Ingrediant> list = ingrediantDictionary.Values.Except(recipeToCheck.Ingrediants).ToList();
+            return list;
         }
     }
 }

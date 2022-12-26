@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RecipeListLibrary;
 
-namespace RecipeList {
+namespace RecipeListLibrary {
     public static class RecipeManager {
         public static Dictionary<int, Recipe> recipeDictionary = new Dictionary<int, Recipe>();
 
@@ -23,11 +24,16 @@ namespace RecipeList {
         public static List<Recipe> GetAll() {
             return recipeDictionary.Values.ToList();
         }
-        public static List<Tuple<Ingrediant, int>> GetIngrediants(int key) {
-            return recipeDictionary[key].Ingrediants;
+
+        public static bool AddIngrediantToRecipe(int ingrediantKey, int recipeKey) {
+            Ingrediant ingrediantToAdd = IngrediantManager.ingrediantDictionary[ingrediantKey];
+            recipeDictionary[recipeKey].Ingrediants.Add(ingrediantToAdd);
+            return true;
         }
-        public static string GetRecipeName(int key) {
-            return recipeDictionary[key].Name;
+        public static bool RemoveIngrediantFromRecipe(int ingrediantKey, int recipeKey) {
+            Ingrediant ingrediantToRemove = IngrediantManager.ingrediantDictionary[ingrediantKey];
+            recipeDictionary[recipeKey].Ingrediants.Remove(ingrediantToRemove);
+            return true;
         }
     }
 }

@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RecipeListLibrary;
 
-namespace RecipeList {
+namespace RecipeListLibrary {
     public class Recipe {
         public int Key { get; set; }
         public string Name { get; set; }
         public float Cost { 
             get { return CalculateCost(); } 
         }
-        public List<Tuple<Ingrediant, int>> Ingrediants { get; set; }
+        public List<Ingrediant> Ingrediants { get; set; }
         public Recipe(int key, string title) {
             Key = key;
             Name = title;
-            Ingrediants = new List<Tuple<Ingrediant,int>>();
-            Ingrediants.Add(new Tuple<Ingrediant, int>(IngrediantManager.Get(0), 4));
-            Ingrediants.Add(new Tuple<Ingrediant, int>(IngrediantManager.Get(1), 2));
+            Ingrediants = new List<Ingrediant>();
         }
         public float CalculateCost() {
             float cost = 0;
-            foreach (Tuple<Ingrediant, int> tuple in Ingrediants) {
-                cost += tuple.Item1.Cost * tuple.Item2;
+            foreach (Ingrediant ingrediant in Ingrediants) {
+                cost += ingrediant.Cost;
             }
             return cost;
         }

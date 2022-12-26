@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeList {
+namespace RecipeListLibrary {
     public class Ingrediant {
         public string Name { get; set; }
         public int Key { get; set; }
@@ -14,6 +14,5 @@ namespace RecipeList {
             this.Name = name;
             this.Cost = cost;
         }
-
     }
 }

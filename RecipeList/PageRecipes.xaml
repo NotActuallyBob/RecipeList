@@ -22,7 +22,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding Name}" />
                         <TextBlock Grid.Column="1" Text="{Binding Cost}"/>
-                        <Button Grid.Column="2" Tag="{Binding Name}" Content="Modify"/>
+                        <Button Grid.Column="2" Tag="{Binding Key}" Content="Modify" Click="Button_ModifyRecipe"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
